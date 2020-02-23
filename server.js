@@ -4,8 +4,8 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const path = require("path");
 mongoose.set("useFindAndModify", false);
-
 // Declare static port for dev testing
 let port = 3001;
 
@@ -77,7 +77,7 @@ app.delete("/delete", (req, res) => {
 
 // Serve static files for initial run
 app.get("*", (req, res) => {
-  res.sendFile("../client/public/index.html");
+  res.sendFile("client/public/index.html");
 });
 
 // Listen on static port, or ENV port if in production
