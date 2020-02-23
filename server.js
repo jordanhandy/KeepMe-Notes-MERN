@@ -26,7 +26,7 @@ app.use(
   })
 );
 // Declare public folder for assets
-app.use(express.static("../client/public"));
+app.use(express.static("client/public"));
 
 // Connect Mongoose
 // Remove deprecation warnings.  Uncomment line 32, and comment line 33 for dev testing
