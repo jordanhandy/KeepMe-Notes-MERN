@@ -25,7 +25,7 @@ app.use(
   })
 );
 // Declare public folder for assets
-app.use(express.static("client/public/index.html"));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Connect Mongoose
 // Remove deprecation warnings.  Uncomment line 32, and comment line 33 for dev testing
@@ -44,11 +44,6 @@ const noteSchema = new mongoose.Schema({
 const Note = mongoose.model("Note", noteSchema);
 
 // Routes
-
-app.get("/", (req, res) =>
-res.sendFile(path.join(__dirname + '/client/build/index.html'))
-);
-
 // Find all items
 app.get("/get", (req, res) =>
   Note.find({}, function(err, notes) {
