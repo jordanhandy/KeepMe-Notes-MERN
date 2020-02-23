@@ -75,10 +75,13 @@ app.delete("/delete", (req, res) => {
   res.json({ succes: "true" });
 });
 
+if (process.env.NODE_ENV === 'production'){
+  app.use(express.static('client/build'));
 // Serve static files for initial run
 app.get("*", (req, res) => {
-  res.sendFile("client/public/index.html");
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
+}
 
 // Listen on static port, or ENV port if in production
 app.listen(process.env.PORT || port, function() {
