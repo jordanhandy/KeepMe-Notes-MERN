@@ -25,7 +25,7 @@ app.use(
   })
 );
 // Declare public folder for assets
-app.use(express.static("client/public"));
+app.use(express.static(path.join(__dirname, 'client/public')));
 
 // Connect Mongoose
 // Remove deprecation warnings.  Uncomment line 32, and comment line 33 for dev testing
@@ -76,10 +76,10 @@ app.delete("/delete", (req, res) => {
 });
 
 if (process.env.NODE_ENV === 'production'){
-  app.use(express.static('client/build'));
+  app.use(express.static(path.join(__dirname, 'client/build')));
 // Serve static files for initial run
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "public", "index.html"));
+  res.sendfile(path.join(__dirname = 'client/build/index.html'));
 });
 }
 
