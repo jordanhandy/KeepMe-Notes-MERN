@@ -24,6 +24,7 @@
     "mongoose": "^5.9.2",
     "path": "^0.12.7"
   },
+  "proxy": "PROCESS.env.PORT",
   "engines": {
     "node": "12.14.1",
     "npm": "6.13.7"
