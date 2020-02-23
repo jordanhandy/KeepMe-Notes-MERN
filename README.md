@@ -10,7 +10,7 @@ This project consists of:
 * Various Middleware(s)
 * Database for persistent storage is on MongoDB Atlas
 
-# To Use:
+## To Use:
 1. In the root directory, run "npm install".  This will install the server dependencies
 2. In the "client" directory, run "npm install".  This will install the React frontend dependencies.
 3. "npm start" from the client directory should open the React frontend on Localhost 3000
