@@ -45,6 +45,10 @@ const Note = mongoose.model("Note", noteSchema);
 
 // Routes
 
+app.get("/get", (req, res) =>
+res.sendFile(path.join(__dirname = 'client/build/index.html'))
+);
+
 // Find all items
 app.get("/get", (req, res) =>
   Note.find({}, function(err, notes) {
