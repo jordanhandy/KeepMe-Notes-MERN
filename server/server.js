@@ -5,6 +5,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 mongoose.set("useFindAndModify", false);
+const path = require("path");
 
 // Declare static port for dev testing
 let port = 3001;
@@ -25,19 +26,19 @@ app.use(
   })
 );
 // Declare public folder for assets
-app.use(express.static("public"));
+app.use(express.static("../client/public"));
 
 // Connect Mongoose
 // Remove deprecation warnings.  Uncomment line 32, and comment line 33 for dev testing
 // mongoose.connect("mongodb://localhost:27017/noteDB", {
-  mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: true
 });
 // Create db item Schema
 const noteSchema = new mongoose.Schema({
-title: String,
+  title: String,
   content: String
 });
 // Mongoose  post Model
@@ -73,6 +74,11 @@ app.delete("/delete", (req, res) => {
   });
 
   res.json({ succes: "true" });
+});
+
+// Serve static files for initial run
+app.get("*", (req, res) => {
+  res.sendFile("../client/public/index.html");
 });
 
 // Listen on static port, or ENV port if in production
