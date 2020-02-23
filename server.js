@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 mongoose.set("useFindAndModify", false);
 // Declare static port for dev testing
-let port = 3001;
+let port = process.env.PORT || 3001;
 
 const app = express();
 
@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'client/public')));
 // Connect Mongoose
 // Remove deprecation warnings.  Uncomment line 32, and comment line 33 for dev testing
 // mongoose.connect("mongodb://localhost:27017/noteDB", {
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: true
