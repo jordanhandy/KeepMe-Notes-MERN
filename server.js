@@ -5,7 +5,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 mongoose.set("useFindAndModify", false);
-const path = require("path");
 
 // Declare static port for dev testing
 let port = 3001;
