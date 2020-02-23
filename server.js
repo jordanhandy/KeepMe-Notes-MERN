@@ -45,7 +45,7 @@ const Note = mongoose.model("Note", noteSchema);
 
 // Routes
 
-app.get("/get", (req, res) =>
+app.get("/", (req, res) =>
 res.sendFile(path.join(__dirname = 'client/build/index.html'))
 );
 
